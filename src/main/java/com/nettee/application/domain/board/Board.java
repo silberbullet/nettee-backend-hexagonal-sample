@@ -53,14 +53,17 @@ public class Board extends BaseTimeEntity {
         this.deletedAt = null;
     }
 
+    // 제목 수정
     public void updateTitle(String title) {
         this.title = title;
     }
 
+    // 내용 수정
     public void updateContent(String content) {
         this.content = content;
     }
 
+    // 삭제
     public void softDelete() {
         this.deletedAt = LocalDateTime.now();
     }

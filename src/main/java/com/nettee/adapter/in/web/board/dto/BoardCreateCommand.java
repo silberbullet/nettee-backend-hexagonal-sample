@@ -1,4 +1,4 @@
-package com.nettee.application.command.board.dto;
+package com.nettee.adapter.in.web.board.dto;
 
 import jakarta.validation.constraints.NotNull;
 

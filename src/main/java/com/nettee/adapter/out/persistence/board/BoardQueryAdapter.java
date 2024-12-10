@@ -1,7 +1,7 @@
 package com.nettee.adapter.out.persistence.board;
 
 import com.nettee.application.domain.board.Board;
-import com.nettee.application.port.out.BoardQueryOutPort;
+import com.nettee.application.port.BoardQueryPort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
@@ -13,7 +13,7 @@ import java.util.Optional;
 import static com.nettee.application.domain.board.QBoard.board;
 
 @Repository
-public class BoardQueryAdapter extends QuerydslRepositorySupport implements BoardQueryOutPort {
+public class BoardQueryAdapter extends QuerydslRepositorySupport implements BoardQueryPort {
 
     public BoardQueryAdapter() { super(Board.class); }
 

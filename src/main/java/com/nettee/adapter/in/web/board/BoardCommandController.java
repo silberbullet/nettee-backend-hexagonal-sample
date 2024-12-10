@@ -1,11 +1,13 @@
 package com.nettee.adapter.in.web.board;
 
 import com.nettee.adapter.in.web.board.dto.BoardDto;
-import com.nettee.application.mapper.BoardMapper;
-import com.nettee.application.port.in.BoardCommandInPort;
-import com.nettee.application.command.board.dto.BoardCreateCommand;
-import com.nettee.application.command.board.dto.BoardDeleteCommand;
-import com.nettee.application.command.board.dto.BoardUpdateCommand;
+import com.nettee.adapter.mapper.BoardMapper;
+import com.nettee.adapter.in.web.board.dto.BoardCreateCommand;
+import com.nettee.adapter.in.web.board.dto.BoardDeleteCommand;
+import com.nettee.adapter.in.web.board.dto.BoardUpdateCommand;
+import com.nettee.application.usecase.BoardCreateUseCase;
+import com.nettee.application.usecase.BoardDeleteUseCase;
+import com.nettee.application.usecase.BoardUpdateUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -19,7 +21,9 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class BoardCommandController {
 
-    private final BoardCommandInPort commandHandler;
+    private final BoardCreateUseCase boardCreateUseCase;
+    private final BoardUpdateUseCase boardUpdateUseCase;
+    private final BoardDeleteUseCase boardDeleteUseCase;
     private final BoardMapper boardMapper;
 
     @Operation(
@@ -29,7 +33,7 @@ public class BoardCommandController {
     @PostMapping
     public ResponseEntity<BoardDto> create(@RequestBody @Valid BoardCreateCommand command) {
 
-        var board = commandHandler.handle(command);
+        var board = boardCreateUseCase.createBoard(boardMapper.toEntity(command));
 
         return ResponseEntity.ok(boardMapper.toDto(board));
     }
@@ -41,7 +45,7 @@ public class BoardCommandController {
     @PatchMapping("/{boardId}")
     public ResponseEntity<BoardDto> update(@RequestBody BoardUpdateCommand command) {
 
-        var board =  commandHandler.handle(command);
+        var board =  boardUpdateUseCase.updateBoard(boardMapper.toEntity(command));
 
         return ResponseEntity.ok(boardMapper.toDto(board));
     }
@@ -53,6 +57,6 @@ public class BoardCommandController {
     @DeleteMapping("/{boardId}")
     public void delete(@RequestBody BoardDeleteCommand command) {
 
-        commandHandler.handle(command);
+        boardDeleteUseCase.deleteBoard(command.id());
     }
 }

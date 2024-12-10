@@ -1,8 +1,8 @@
 package com.nettee.adapter.in.web.board;
 
 import com.nettee.adapter.in.web.board.dto.BoardDto;
-import com.nettee.application.mapper.BoardMapper;
-import com.nettee.application.port.in.BoardQueryInPort;
+import com.nettee.adapter.mapper.BoardMapper;
+import com.nettee.application.usecase.BoardReadUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/board")
 public class BoardQueryController {
 
-    private final BoardQueryInPort boardQueryInPort;
+    private final BoardReadUseCase boardReadUseCase;
     private final BoardMapper boardMapper;
 
     @Operation(
@@ -35,7 +35,7 @@ public class BoardQueryController {
     @GetMapping
     public ResponseEntity<Page<BoardDto>> getBoardList(Pageable pageable) {
 
-        var boardList = boardQueryInPort.getBoardList(pageable).stream()
+        var boardList = boardReadUseCase.getBoardList(pageable).stream()
                         .map(boardMapper::toDto)
                         .toList();
 
@@ -53,7 +53,7 @@ public class BoardQueryController {
     @GetMapping("/{boardId}")
     public ResponseEntity<BoardDto> getBoard(@PathVariable Long boardId){
 
-        var board = boardQueryInPort.getBoard(boardId);
+        var board = boardReadUseCase.getBoard(boardId);
 
         return ResponseEntity.ok(boardMapper.toDto(board));
     }

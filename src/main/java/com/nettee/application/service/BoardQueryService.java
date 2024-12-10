@@ -1,8 +1,8 @@
 package com.nettee.application.service;
 
 import com.nettee.application.domain.board.Board;
-import com.nettee.application.port.in.BoardQueryInPort;
-import com.nettee.application.port.out.BoardQueryOutPort;
+import com.nettee.application.port.BoardQueryPort;
+import com.nettee.application.usecase.BoardReadUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,23 +11,23 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class BoardQueryService implements BoardQueryInPort {
+public class BoardQueryService implements BoardReadUseCase {
 
-    private final BoardQueryOutPort outPort;
+    private final BoardQueryPort boardQueryPort;
 
     @Override
     @Transactional(readOnly = true)
     public Page<Board> getBoardList(Pageable pageable)  {
 
-        return outPort.findAllBoard(pageable);
+        return boardQueryPort.findAllBoard(pageable);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Board getBoard(Long id){
 
-        return outPort.findBoardById(id).orElseThrow(
-                ()-> new IllegalArgumentException("Board not found")
+        return boardQueryPort.findBoardById(id).orElseThrow(
+                () -> new IllegalArgumentException("Board not found")
         );
     }
 }

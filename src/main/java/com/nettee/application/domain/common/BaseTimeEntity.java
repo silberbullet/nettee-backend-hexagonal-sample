@@ -16,9 +16,9 @@ import java.time.LocalDateTime;
  *
  * 주요 어노테이션 설명:
  * - @MappedSuperclass: 이 클래스가 엔티티가 아닌 공통 매핑 정보를 제공하는 슈퍼클래스임
- * - @EntityListeners(AuditingEntityListener.class): JPA 엔티티 리스너를 등록하여 생성 및 수정 시간을 자동으로 설정합니다.
- * - @CreatedDate: 엔티티가 처음 생성될 때의 시간을 자동으로 설정합니다.
- * - @LastModifiedDate: 엔티티가 마지막으로 수정될 때의 시간을 자동으로 설정합니다.
+ * - @EntityListeners(AuditingEntityListener.class): JPA 엔티티 리스너를 등록하여 생성 및 수정 시간을 자동으로 설정
+ * - @CreatedDate: 엔티티가 처음 생성될 때의 시간을 자동으로 설정
+ * - @LastModifiedDate: 엔티티가 마지막으로 수정될 때의 시간을 자동으로 설정
  */
 @Getter
 @MappedSuperclass
