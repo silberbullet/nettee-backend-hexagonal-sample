@@ -97,26 +97,24 @@ CQRS는 Command와 Query(명령과 조회)의 책임을 분리하는 아키텍�
 - SRC 폴더 구조
 
 ```
-├─main
-│  ├─java
-│     └─com
-│         └─nettee
-│             ├─adapter                 --  외부와의 상호작용을 처리하는 계층, application 입출력을 담당
-│             │  ├─in                     --  외부로부터의 입력을 처리하는 어댑터
-│             │  │  └─web                   -- Web 요청을 처리하는 컨트롤러 및 DTO 정의
-│             │  │      └─board
-│             │  │          └─dto
-│             │  ├─mapper                 --  DTO <-> Entity 매핑 관련 클래스
-│             │  └─out                    --  외부로부터의 출력을 처리하는 어댑터 ( DB, Event, Message 처리 ) 
-│             │      └─persistence          -- 영속성 계층의 구현체 (예: JPA, MyBatis 등)
-│             │          └─board
-│             └─application             -- 핵심 비즈니스 로직이 포함된 계층, 도메인과 유스케이스를 정의
-│                 ├─domain                -- 엔티티 정의
-│                 │  ├─board
-│                 │  └─common
-│                 ├─port                  -- adpater와 상호작용을 위한 인터페이스 정의
-│                 ├─service               -- 비즈니스 로직을 처리하는 서비스 클래스
-│                 └─usecase               -- 특정 유스케이스(기능) 인터페이스 정의
+  └─com
+      └─nettee
+          ├─board
+          │  ├─adapter              --  외부와의 상호작용을 처리하는 계층, application 입출력을 담당
+          │  │  ├─in                  --  외부로부터의 입력을 처리하는 어댑터
+          │  │  │  ├─mapper             --  DTO <-> Domain 매핑 클래스
+          │  │  │  └─web                -- Web 요청을 처리하는 컨트롤러 및 DTO 정의
+          │  │  │      └─dto
+          │  │  └─out                 --  외부로부터의 출력을 처리하는 어댑터 ( DB, Event, Message 처리 ) 
+          │  │      ├─mapper            --  Entity <-> Domain 매핑 클래스
+          │  │      └─persistence       -- 영속성 계층의 구현체 (예: JPA, MyBatis 등)
+          │  │          └─entity
+          │  └─application            -- 핵심 비즈니스 로직이 포함된 계층, 도메인과 유스케이스를 정의
+          │      ├─domain               -- 비즈니스 도메인 정의
+          │      ├─port                 -- adpater와 상호작용을 위한 인터페이스 정의
+          │      ├─service              -- 비즈니스 로직을 처리하는 서비스 클래스
+          │      └─usecase              -- 특정 유스케이스(기능) 인터페이스 정의
+          └─common
 ```
 
 - 폴더 상세 소개
