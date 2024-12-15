@@ -24,7 +24,6 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class BaseTimeEntity {
-
     /**
      * 엔터티 생성 시간
      */
