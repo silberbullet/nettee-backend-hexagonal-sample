@@ -61,16 +61,14 @@ public class BoardQueryAdapter extends QuerydslRepositorySupport implements Boar
 
     @Override
     public Optional<Board> findBoardById(Long id) {
-        return Optional.ofNullable(boardEntityMapper.toDomain(
+        return boardEntityMapper.toOptionalDomain(
                 getQuerydsl().createQuery()
-                .select(boardEntity)
-                .from(boardEntity)
-                .where(
-                    boardEntity.deletedAt.isNull(),
-                    boardEntity.id.eq(id)
-                )
-                .fetchOne()
-                )
+                        .select(boardEntity)
+                        .from(boardEntity)
+                        .where(
+                                boardEntity.id.eq(id),
+                                boardEntity.deletedAt.isNull()
+                        ).fetchOne()
         );
     }
 }

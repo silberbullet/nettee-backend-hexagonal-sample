@@ -31,8 +31,7 @@ public class BoardCommandAdapter implements BoardCommandPort {
     public Board createBoard(Board board) {
         var boardEntity = boardEntityMapper.toEntity(board);
 
-        return boardEntityMapper.toDomain(
-                boardJpaRepository.save(boardEntity));
+        return boardEntityMapper.toDomain(boardJpaRepository.save(boardEntity));
     }
 
     @Override
@@ -52,7 +51,6 @@ public class BoardCommandAdapter implements BoardCommandPort {
 
     @Override
     public void deleteBoard(Long id) {
-        // 삭제 처리
         var existBoard = boardJpaRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("Board not found")
         );
