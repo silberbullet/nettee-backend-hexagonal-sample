@@ -5,8 +5,6 @@ import com.nettee.board.adapter.in.web.dto.BoardDto;
 import com.nettee.board.adapter.in.web.dto.BoardCreateCommand;
 import com.nettee.board.adapter.in.web.dto.BoardDeleteCommand;
 import com.nettee.board.adapter.in.web.dto.BoardUpdateCommand;
-import com.nettee.board.adapter.out.persistence.entity.BoardEntity;
-import com.nettee.board.adapter.out.persistence.mapper.BoardEntityMapper;
 import com.nettee.board.application.usecase.BoardCreateUseCase;
 import com.nettee.board.application.usecase.BoardDeleteUseCase;
 import com.nettee.board.application.usecase.BoardUpdateUseCase;

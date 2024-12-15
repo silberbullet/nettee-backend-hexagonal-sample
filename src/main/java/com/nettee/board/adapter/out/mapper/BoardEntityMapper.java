@@ -1,7 +1,5 @@
-package com.nettee.board.adapter.out.persistence.mapper;
+package com.nettee.board.adapter.out.mapper;
 
-import com.nettee.board.adapter.in.web.dto.BoardCreateCommand;
-import com.nettee.board.adapter.in.web.dto.BoardUpdateCommand;
 import com.nettee.board.adapter.out.persistence.entity.BoardEntity;
 import com.nettee.board.application.domain.Board;
 import org.mapstruct.Mapper;

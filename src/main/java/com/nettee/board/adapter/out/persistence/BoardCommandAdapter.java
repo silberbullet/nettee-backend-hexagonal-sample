@@ -1,6 +1,6 @@
 package com.nettee.board.adapter.out.persistence;
 
-import com.nettee.board.adapter.out.persistence.mapper.BoardEntityMapper;
+import com.nettee.board.adapter.out.mapper.BoardEntityMapper;
 import com.nettee.board.application.domain.Board;
 import com.nettee.board.application.port.BoardCommandPort;
 import lombok.RequiredArgsConstructor;
