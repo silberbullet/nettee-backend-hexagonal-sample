@@ -1,4 +1,4 @@
-# Hexagonal Architecture with CQRS Pattern Sample
+## Hexagonal Architecture with CQRS Pattern Sample
 
 ### 🚀 배경 
 
@@ -8,13 +8,47 @@
 
 ### 📖 목차
 
-1. [🧐 잠깐만 아키텍처가 뭔데?](#🧐잠깐만-아키텍처가-뭔데?)
-2. [1️⃣ Hexagonal Architecture에 대해](#1️⃣-hexagonal-architecture에-대해)
-3. [2️⃣ CQRS 패턴에 대해](#2️⃣-cqrs-패턴에-대해)   
-4. [3️⃣ 폴더 구조](#3️⃣-폴더-구조)
+1. [폴더 구조](#1️⃣-폴더-구조)  
+2. [Hexagonal Architecture에 대해](#2️⃣--hexagonal-architecture에-대해)  
+3. [추가적인 리서치 설명](#3️⃣-추가적인-리서치-설명)  
+
+### 1️⃣ 폴더 구조 
+
+- SRC 폴더 구조
+
+```
+  └─com
+      └─nettee
+          ├─board
+          │  ├─adapter              --  외부와의 상호작용을 처리하는 계층, application 입출력을 담당
+          │  │  ├─in                  --  외부로부터의 입력을 처리하는 어댑터
+          │  │  │  ├─mapper             --  DTO <-> Domain 매핑 클래스
+          │  │  │  └─web                -- Web 요청을 처리하는 컨트롤러 및 DTO 정의
+          │  │  │      └─dto
+          │  │  └─out                 --  외부로부터의 출력을 처리하는 어댑터 ( DB, Event, Message 처리 ) 
+          │  │      ├─mapper            --  Entity <-> Domain 매핑 클래스
+          │  │      └─persistence       -- 영속성 계층의 구현체 (예: JPA, MyBatis 등)
+          │  │          └─entity
+          │  └─application            -- 핵심 비즈니스 로직이 포함된 계층, 도메인과 유스케이스를 정의
+          │      ├─domain               -- 비즈니스 도메인 정의
+          │      ├─port                 -- adpater와 상호작용을 위한 인터페이스 정의
+          │      ├─service              -- 비즈니스 로직을 처리하는 서비스 클래스
+          │      └─usecase              -- 특정 유스케이스(기능) 인터페이스 정의
+          └─common
+```
+
+---
+
+### 2️⃣  Hexagonal Architecture에 대해
 
 
-### 🧐잠깐만 아키텍처가 뭔데?
+
+---
+
+### 3️⃣ 추가적인 리서치 설명
+
+
+#### 🧐잠깐만 아키텍처가 뭔데?
 
 '**Architecture**' 의 영단어 뜻은 ’건축학‘ 이라는 뜻을 가지며, 대한민국에서는 건축학을 그냥 건축학이라 부르지 영어로 잘 사용하지는 않습니다. 
 
@@ -28,14 +62,7 @@
 
 인간이 걷고자 한다면 인간의 몸은 다리, 뼈, 근육, 신경 등의 구성 요소가 서로 유기적으로 연결되어야 걸을 수 있습니다. 신경과   
 
----
-
-### 1️⃣ Hexagonal Architecture에 대해
-
-
-
----
-### 2️⃣ CQRS 패턴에 대해
+#### CQRS 패턴에 대해
 
 - ⚖️ CQRS (Command and Query Responsibility Segregation)
 
@@ -91,31 +118,3 @@ CQRS는 Command와 Query(명령과 조회)의 책임을 분리하는 아키텍�
 이벤트소싱이란 모든 명령(Command)을 이벤트 형태로 별도의 이벤트 저장소에 저장한다. 이 명령들은 자연스럽게 다시 사용할 수 있습니다. 강한 일관성 및 실시간 업데이트가 필요한 시스템에는 적합하지 않을 수 있습니다.
 
 ---
-
-### 3️⃣ 폴더 구조 
-
-- SRC 폴더 구조
-
-```
-  └─com
-      └─nettee
-          ├─board
-          │  ├─adapter              --  외부와의 상호작용을 처리하는 계층, application 입출력을 담당
-          │  │  ├─in                  --  외부로부터의 입력을 처리하는 어댑터
-          │  │  │  ├─mapper             --  DTO <-> Domain 매핑 클래스
-          │  │  │  └─web                -- Web 요청을 처리하는 컨트롤러 및 DTO 정의
-          │  │  │      └─dto
-          │  │  └─out                 --  외부로부터의 출력을 처리하는 어댑터 ( DB, Event, Message 처리 ) 
-          │  │      ├─mapper            --  Entity <-> Domain 매핑 클래스
-          │  │      └─persistence       -- 영속성 계층의 구현체 (예: JPA, MyBatis 등)
-          │  │          └─entity
-          │  └─application            -- 핵심 비즈니스 로직이 포함된 계층, 도메인과 유스케이스를 정의
-          │      ├─domain               -- 비즈니스 도메인 정의
-          │      ├─port                 -- adpater와 상호작용을 위한 인터페이스 정의
-          │      ├─service              -- 비즈니스 로직을 처리하는 서비스 클래스
-          │      └─usecase              -- 특정 유스케이스(기능) 인터페이스 정의
-          └─common
-```
-
-- 폴더 상세 소개
--   
