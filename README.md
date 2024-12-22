@@ -2,7 +2,8 @@
 
 ### 🚀 배경 
 
-- Nettee 백엔드 팀의 프로젝트 방향성을 결정하기 위해 샘플 코드를 작성 [ Reviewer : [merge-simpson](https://github.com/merge-simpson) ]
+- Nettee 백엔드 팀의 프로젝트 방향성을 결정하기 위해 샘플 코드를 작성
+  - [ Reviewer : [merge-simpson](https://github.com/merge-simpson) ]
 - 헥사고날 아키텍처의 의미 수준과 구현 수준에 고찰과 리서치 내용 전달
 
 
