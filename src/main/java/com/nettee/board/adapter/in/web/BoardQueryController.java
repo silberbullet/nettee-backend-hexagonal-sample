@@ -1,7 +1,7 @@
 package com.nettee.board.adapter.in.web;
 
 import com.nettee.board.adapter.in.web.dto.BoardDto;
-import com.nettee.board.adapter.in.mapper.BoardDtoMapper;
+import com.nettee.board.adapter.in.web.mapper.BoardDtoMapper;
 import com.nettee.board.application.usecase.BoardReadUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -28,7 +28,7 @@ public class BoardQueryController {
             summary = "게시판 목록 조회 API",
             description = """
                     <p>
-                        삭제되지 않은 게시판 목록 조회 
+                        삭제되지 않은 게시판 목록 조회
                     </p>
                     """
     )
@@ -48,7 +48,7 @@ public class BoardQueryController {
                     <p>
                         id로 게시판 상세 조회
                    </p>
-                    """
+                   """
     )
     @GetMapping("/{boardId}")
     public ResponseEntity<BoardDto> getBoard(@PathVariable Long boardId){

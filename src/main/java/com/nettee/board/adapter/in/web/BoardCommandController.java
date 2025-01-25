@@ -1,6 +1,6 @@
 package com.nettee.board.adapter.in.web;
 
-import com.nettee.board.adapter.in.mapper.BoardDtoMapper;
+import com.nettee.board.adapter.in.web.mapper.BoardDtoMapper;
 import com.nettee.board.adapter.in.web.dto.BoardDto;
 import com.nettee.board.adapter.in.web.dto.BoardCreateCommand;
 import com.nettee.board.adapter.in.web.dto.BoardDeleteCommand;

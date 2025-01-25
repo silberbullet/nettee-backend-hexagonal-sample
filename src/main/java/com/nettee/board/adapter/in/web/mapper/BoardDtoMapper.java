@@ -1,4 +1,4 @@
-package com.nettee.board.adapter.in.mapper;
+package com.nettee.board.adapter.in.web.mapper;
 
 import com.nettee.board.adapter.in.web.dto.BoardCreateCommand;
 import com.nettee.board.adapter.in.web.dto.BoardDto;
@@ -8,7 +8,6 @@ import org.mapstruct.Mapper;
 
 /**
  *  BoardDtoMapper
- *
  *  DTO <-> Domain 간에 매핑을 위한 인터페이스
  */
 @Mapper(componentModel = "spring")
